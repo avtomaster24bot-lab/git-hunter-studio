@@ -1,0 +1,21 @@
+(()=>{const C=339.3,fmt=s=>{s=Math.floor(s||0);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+const players=[...document.querySelectorAll('.player')];let cur=null;
+players.forEach((p,i)=>{const a=new Audio();a.preload='none';a.src=p.dataset.src;p._a=a;
+ const fg=p.querySelector('.fg'),fill=p.querySelector('.fill'),ct=p.querySelector('.cur');
+ p.querySelector('.play').onclick=()=>{if(a.paused){if(cur&&cur!==a)cur.pause();cur=a;a.play()}else a.pause()};
+ a.onplay=()=>p.classList.add('on');a.onpause=()=>p.classList.remove('on');
+ a.ontimeupdate=()=>{const r=a.duration?a.currentTime/a.duration:0;fg.style.strokeDashoffset=C*(1-r);fill.style.width=r*100+'%';ct.textContent=fmt(a.currentTime)};
+ a.onended=()=>{p.classList.remove('on');const n=players[i+1];if(n){n.closest('.block').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>n.querySelector('.play').click(),700)}};
+ p.querySelector('.bar').onclick=e=>{const b=e.currentTarget.getBoundingClientRect();const go=()=>{a.currentTime=(e.clientX-b.left)/b.width*a.duration};if(a.duration)go();else{a.addEventListener('loadedmetadata',go,{once:true});if(cur&&cur!==a)cur.pause();cur=a;a.play()}};
+});
+document.querySelectorAll('.ttoggle').forEach(b=>b.onclick=()=>{const t=b.nextElementSibling,o=!t.classList.contains('open');t.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const f=document.getElementById('lead');if(f){f.querySelectorAll('.pick button').forEach(b=>b.onclick=()=>b.classList.toggle('sel'));
+ const res=f.querySelector('.result'),pre=res.querySelector('pre');
+ const copy=t=>navigator.clipboard?navigator.clipboard.writeText(t).catch(()=>{}):Promise.resolve();
+ f.onsubmit=e=>{e.preventDefault();const d=new FormData(f);const need=[...f.querySelectorAll('.pick .sel')].map(b=>b.textContent).join(', ')||'—';
+  const msg=`Здравствуйте! Хочу бесплатную консультацию.\nИмя: ${d.get('name')}\nКонтакт: ${d.get('contact')}\nЧто нужно: ${need}`;
+  pre.textContent=msg;res.hidden=false;copy(msg);window.open('https://t.me/Git_Hunter_bot?start=consult','_blank','noopener')};
+ res.querySelector('.copy').onclick=e=>{copy(pre.textContent);e.target.textContent='Скопировано ✓'}}
+})();
