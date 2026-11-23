@@ -81,7 +81,7 @@ footer{text-align:center;color:var(--m);font-size:13px;padding:40px 20px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
 /* Compact slide videos — only at the very bottom, quiet on purpose */
-.slides-sec{padding:28px 0 10px;border-top:1px solid var(--line);margin-top:8px}
+.slides-sec{padding:28px 0 110px;border-top:1px solid var(--line);margin-top:8px}
 .slides-sec summary{cursor:pointer;list-style:none;color:var(--m);font:600 15px Inter,sans-serif;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:10px 0}
 .slides-sec summary::-webkit-details-marker{display:none}
 .slides-sec summary::before{content:"▸";color:var(--b);margin-right:2px}
