@@ -1,12 +1,12 @@
-# Git Hunter Studio — сайт услуг в формате Git Hunter
+# Git Hunter Studio
 
 **Сайт:** https://avtomaster24bot-lab.github.io/git-hunter-studio/
 
-Продающий сайт: личный ИИ-ассистент, сайты с ИИ-консультантом, ИИ-автоматизация бизнеса (Казахстан, цены в ₸).
-Оформлен как карточки ежедневной подборки [Git Hunter](https://avtomaster24bot-lab.github.io/git-hunter/): у каждой из 10 карточек есть
-картинка, название, короткое описание, разделы «Что это / Зачем вам / Что умеет / Для кого / Цена», аудио-рассказ, вертикальное видео прямо в карточке,
-кнопки «⬇ Скачать видео», «📋 Текст для YouTube / Instagram / TikTok», «Текст аудио», «Поделиться».
-Плюс плеер «слушать всё подряд», галерея Shorts, пакеты и цены, форма заявки и закреплённая кнопка консультации.
+Продающий лендинг: личный ИИ-ассистент, сайты с ИИ-консультантом, ИИ-автоматизация бизнеса (Казахстан, цены в ₸).
+
+Основная страница — как в первой версии: крупные кнопки «Плей», заголовок блока и переключатель «Текст аудио». Читать почти ничего не нужно. Когда одно аудио заканчивается, автоматически начинается следующее (и страница плавно прокручивается к нему).
+
+В самом низу — свёрнутый компактный блок «Видео со слайдами»: 10 роликов услуг и 3 промо, с кнопкой «⬇ Скачать видео». Воспроизведение с сайта (`video/`), скачивание из релизов.
 
 Заявки: https://t.me/Git_Hunter_bot?start=consult. Форма копирует текст заявки и открывает бота (токенов во фронтенде нет).
 
@@ -14,7 +14,7 @@
 - 10 видео услуг (1080×1920, 7–8 слайдов, Кен Бёрнс, переходы, субтитры по словам): папка `video/` на сайте и Release [studio-videos-v1](https://github.com/avtomaster24bot-lab/git-hunter-studio/releases/tag/studio-videos-v1)
 - 3 промо-видео: Release [promo-v1](https://github.com/avtomaster24bot-lab/git-hunter-studio/releases/tag/promo-v1) —
   [promo-1-assistant.mp4](https://github.com/avtomaster24bot-lab/git-hunter-studio/releases/download/promo-v1/promo-1-assistant.mp4), [promo-2-site.mp4](https://github.com/avtomaster24bot-lab/git-hunter-studio/releases/download/promo-v1/promo-2-site.mp4), [promo-3-prices.mp4](https://github.com/avtomaster24bot-lab/git-hunter-studio/releases/download/promo-v1/promo-3-prices.mp4)
-- Посты с хэштегами: [promo/POSTS.md](promo/POSTS.md); тексты для каждой карточки — в `data/cards.json` (поле `post`) и по кнопкам на сайте.
+- Посты с хэштегами: [promo/POSTS.md](promo/POSTS.md); тексты постов для каждой услуги — в `data/cards.json` (поле `post`) и в `promo/POSTS.md`.
 
 ## Как менять
 - Тексты озвучки: `tools/blocks.json`; разделы карточек: `tools/cards.json`
